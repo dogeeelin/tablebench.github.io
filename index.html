@@ -235,137 +235,6 @@
     </div>
   </section>
 
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <!-- Example. -->
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Data Statistics and Examples</h2>
-          <div class="content has-text-justified">
-            <p>
-              DS-1000 contains 1000 problems originating from 451 unique StackOverflow problems.
-              To defend against potential memoriza- tion, more than half of the DS-1000 problems
-              are modified from the original StackOverflow problems; they include 152 surface
-              perturbations, 235 semantic perturbations, and 162 difficult rewrites.
-            </p>
-
-            <div style="text-align: center;">
-              <img src="static/images/tablebench-framework.jpg" width="500" height="500">
-            </div>
-
-            <p>
-              Below are more DS-1000 examples. For each example, The model needs to fill in the code
-              into “[insert]” in the prompt on the left; the code will then be executed to pass
-              the multi-criteria automatic evaluation, which includes the test cases and the
-              surface form constraints; a reference solution is provided at the bottom left.
-            </p>
-
-            <div class="tabs is-centered example_lst">
-              <ul>
-                <li class="is-active"><a title="JSON">JSON</a></li>
-                <li><a title="Markdown">Markdown</a></li>
-                <li><a title="XML">XML</a></li>
-                <li><a title="HTML">HTML</a></li>
-                <li><a title="LaTeX">LaTeX</a></li>
-                <li><a title="Grid">Grid</a></li>
-              </ul>
-            </div>
-
-            <!-- <form>
-              <input type="radio" name="library" checked onclick=Click_2() title="NumPy">NumPy
-              <input type="radio" name="library" onclick=Click_2() title="SciPy">SciPy
-              <input type="radio" name="library" onclick=Click_2() title="Pandas">Pandas
-              <input type="radio" name="library" onclick=Click_2() title="TensorFlow">TensorFlow
-              <input type="radio" name="library" onclick=Click_2() title="PyTorch">PyTorch
-              <input type="radio" name="library" onclick=Click_2() title="Scikit-learn">Scikit-learn
-              <input type="radio" name="library" onclick=Click_2() title="Matplotlib">Matplotlib
-            </form> -->
-
-            <script type="text/javascript">
-              document.querySelectorAll(".example_lst li").forEach(e => {
-                e.addEventListener("click", Click_2)
-              })
-
-              function Click_2(eve)
-              {
-                const iTxt = eve.srcElement.innerText
-                for(let v of document.querySelectorAll(".example_lst a"))
-                {
-                  if(iTxt === v.innerText)
-                  {
-                    v.parentElement.className = "is-active";
-                  } else {
-                    v.parentElement.className = "";
-                  }
-                }
-                for(let block of document.getElementsByClassName('lib_examples'))
-                {
-                  block.style.display = (block.title === iTxt) ? 'block' : 'none';
-                }
-              }
-
-            </script>
-
-            <div title="JSON" class="lib_examples" style="display: block;">
-              <img src="static/images/numpy_example.jpg">
-              <p>
-                NumPy example problem involving randomness, requiring the use of a specialist knowledge test.
-              </p>
-            </div>
-
-            <div title="Markdown" class="lib_examples" style="display: none;">
-              <img src="static/images/scipy_example.jpg">
-              <p>
-                An example problem of SciPy. Specific checking on conversion between dense matrix and sparse matrix.
-              </p>
-            </div>
-
-            <div title="XML" class="lib_examples" style="display: none;">
-              <img src="static/images/pandas_example.jpg">
-              <p>
-                An example problem of Pandas. We need to write reference solutions by ourselves
-                because high-vote replies from StackOverflow ignore the requirement "but does not exactly match it".
-              </p>
-            </div>
-
-            <div title="HTML" class="lib_examples" style="display: none;">
-              <img src="static/images/tensorflow_example.jpg">
-              <p>
-                An example problem of TensorFlow. We implemented well-designed test function for tensor comparison.
-              </p>
-            </div>
-
-            <div title="LaTeX" class="lib_examples" style="display: none;">
-              <img src="static/images/pytorch_example.jpg">
-              <p>
-                An example problem of PyTorch, with failed attempt and error message given in description.
-              </p>
-            </div>
-
-            <div title="Grid" class="lib_examples" style="display: none;">
-              <img src="static/images/sklearn_example.jpg">
-              <p>
-                An example problem of Scikit-learn, requiring applying sklearn preprocessing method to Pandas dataframe.
-              </p>
-            </div>
-
-            <!-- <div title="Matplotlib" class="lib_examples" style="display: none;">
-              <img src="static/images/matplotlib_example.jpg">
-              <p>
-                An example problem of Matplotlib. Matplotlib original questions often contain example figures which cannot be
-                processed by current code models. We rewrite original questions into standalone questions in the form of comments.
-              </p>
-            </div> -->
-
-          </div>
-        </div>
-      </div>
-      <!--/ Example. -->
-    </div>
-  </section>
-
-
   <section class="section">
     <div class="container is-max-desktop">
       <!-- Perturbation and Prompt. -->
@@ -613,6 +482,137 @@ print(b)
       <!--/ Perturbation and Prompt. -->
     </div>
   </section>
+
+
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Example. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Data Statistics and Examples</h2>
+          <div class="content has-text-justified">
+            <p>
+              DS-1000 contains 1000 problems originating from 451 unique StackOverflow problems.
+              To defend against potential memoriza- tion, more than half of the DS-1000 problems
+              are modified from the original StackOverflow problems; they include 152 surface
+              perturbations, 235 semantic perturbations, and 162 difficult rewrites.
+            </p>
+
+            <div style="text-align: center;">
+              <img src="static/images/tablebench-framework.jpg" width="500" height="500">
+            </div>
+
+            <p>
+              Below are the examples of TableBench in 6 different formats. The initial table representation is a 2d-list, which we convert to other formats. 
+            </p>
+
+            <div class="tabs is-centered example_lst">
+              <ul>
+                <li class="is-active"><a title="JSON">JSON</a></li>
+                <li><a title="Markdown">Markdown</a></li>
+                <li><a title="XML">XML</a></li>
+                <li><a title="HTML">HTML</a></li>
+                <li><a title="LaTeX">LaTeX</a></li>
+                <li><a title="Grid">Grid</a></li>
+              </ul>
+            </div>
+
+            <!-- <form>
+              <input type="radio" name="library" checked onclick=Click_2() title="NumPy">NumPy
+              <input type="radio" name="library" onclick=Click_2() title="SciPy">SciPy
+              <input type="radio" name="library" onclick=Click_2() title="Pandas">Pandas
+              <input type="radio" name="library" onclick=Click_2() title="TensorFlow">TensorFlow
+              <input type="radio" name="library" onclick=Click_2() title="PyTorch">PyTorch
+              <input type="radio" name="library" onclick=Click_2() title="Scikit-learn">Scikit-learn
+              <input type="radio" name="library" onclick=Click_2() title="Matplotlib">Matplotlib
+            </form> -->
+
+            <script type="text/javascript">
+              document.querySelectorAll(".example_lst li").forEach(e => {
+                e.addEventListener("click", Click_2)
+              })
+
+              function Click_2(eve)
+              {
+                const iTxt = eve.srcElement.innerText
+                for(let v of document.querySelectorAll(".example_lst a"))
+                {
+                  if(iTxt === v.innerText)
+                  {
+                    v.parentElement.className = "is-active";
+                  } else {
+                    v.parentElement.className = "";
+                  }
+                }
+                for(let block of document.getElementsByClassName('lib_examples'))
+                {
+                  block.style.display = (block.title === iTxt) ? 'block' : 'none';
+                }
+              }
+
+            </script>
+
+            <div title="JSON" class="lib_examples" style="display: block;">
+              <img src="static/images/numpy_example.jpg">
+              <p>
+                NumPy example problem involving randomness, requiring the use of a specialist knowledge test.
+              </p>
+            </div>
+
+            <div title="Markdown" class="lib_examples" style="display: none;">
+              <img src="static/images/scipy_example.jpg">
+              <p>
+                An example problem of SciPy. Specific checking on conversion between dense matrix and sparse matrix.
+              </p>
+            </div>
+
+            <div title="XML" class="lib_examples" style="display: none;">
+              <img src="static/images/pandas_example.jpg">
+              <p>
+                An example problem of Pandas. We need to write reference solutions by ourselves
+                because high-vote replies from StackOverflow ignore the requirement "but does not exactly match it".
+              </p>
+            </div>
+
+            <div title="HTML" class="lib_examples" style="display: none;">
+              <img src="static/images/tensorflow_example.jpg">
+              <p>
+                An example problem of TensorFlow. We implemented well-designed test function for tensor comparison.
+              </p>
+            </div>
+
+            <div title="LaTeX" class="lib_examples" style="display: none;">
+              <img src="static/images/pytorch_example.jpg">
+              <p>
+                An example problem of PyTorch, with failed attempt and error message given in description.
+              </p>
+            </div>
+
+            <div title="Grid" class="lib_examples" style="display: none;">
+              <img src="static/images/sklearn_example.jpg">
+              <p>
+                An example problem of Scikit-learn, requiring applying sklearn preprocessing method to Pandas dataframe.
+              </p>
+            </div>
+
+            <!-- <div title="Matplotlib" class="lib_examples" style="display: none;">
+              <img src="static/images/matplotlib_example.jpg">
+              <p>
+                An example problem of Matplotlib. Matplotlib original questions often contain example figures which cannot be
+                processed by current code models. We rewrite original questions into standalone questions in the form of comments.
+              </p>
+            </div> -->
+
+          </div>
+        </div>
+      </div>
+      <!--/ Example. -->
+    </div>
+  </section>
+
 
 
   <section class="section">
