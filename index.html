@@ -321,7 +321,7 @@
 
             </script>
 
-            <div title="Insertion" class="examples" style="display: block;">
+            <div title="Structure" class="examples" style="display: block;">
               <p>
                 Insertion:
               </p>
@@ -353,7 +353,7 @@ print(b)
               </div>
             </div>
 
-            <div title="Completion" class="examples" style="display: none;">
+            <div title="Largetable" class="examples" style="display: none;">
               <p>
                 Completion:
               </p>
@@ -380,7 +380,40 @@ BEGIN SOLUTION
               </div>
             </div>
 
-            <div title="Surface-Perturbation" class="examples" style="display: none;">
+            <div title="Knowledge" class="examples" style="display: none;">
+              <p>
+                Surface Perturbation:
+              </p>
+
+              <div class="highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>Problem:
+Let's say I have a 1d numpy positive integer array like this
+a = array([1,2,3])
+I would like to encode this as a 2D one-hot array(for natural number)
+b = array([[0,1,0,0], [0,0,1,0], [0,0,0,1]])
+The leftmost element corresponds to 0 in `a`(NO MATTER whether 0 appears in `a` or not.), and the rightmost corresponds to the largest number.
+Is there a quick way to do this only using numpy? Quicker than just looping over a to set elements of b, that is.
+A:
+&lt;code&gt;
+import numpy as np
+a = np.array([1, 0, 3])
+&lt;/code&gt;
+BEGIN SOLUTION
+&lt;code&gt;
+[insert]
+&lt;/code&gt;
+END SOLUTION
+&lt;code&gt;
+print(b)
+&lt;/code&gt;
+</code></pre>
+                </div>
+              </div>
+            </div>
+            
+            
+            <div title="Commanding" class="examples" style="display: none;">
               <p>
                 Surface Perturbation:
               </p>
@@ -412,24 +445,25 @@ print(b)
               </div>
             </div>
 
-            <div title="Semantic-Perturbation" class="examples" style="display: none;">
+
+            <div title="Coding" class="examples" style="display: none;">
               <p>
-                Semantic Perturbation:
+                Surface Perturbation:
               </p>
 
               <div class="highlighter-rouge">
                 <div class="highlight">
                   <pre class="highlight"><code>Problem:
-Let's say I have a 1d numpy integer array like this
-a = array([-1,0,3])
-I would like to encode this as a 2D one-hot array(for integers)
-b = array([[1,0,0,0,0], [0,1,0,0,0], [0,0,0,0,1]])
-The leftmost element always corresponds to the smallest element in `a`, and the rightmost vice versa.
+Let's say I have a 1d numpy positive integer array like this
+a = array([1,2,3])
+I would like to encode this as a 2D one-hot array(for natural number)
+b = array([[0,1,0,0], [0,0,1,0], [0,0,0,1]])
+The leftmost element corresponds to 0 in `a`(NO MATTER whether 0 appears in `a` or not.), and the rightmost corresponds to the largest number.
 Is there a quick way to do this only using numpy? Quicker than just looping over a to set elements of b, that is.
 A:
 &lt;code&gt;
 import numpy as np
-a = np.array([-1, 0, 3])
+a = np.array([1, 0, 3])
 &lt;/code&gt;
 BEGIN SOLUTION
 &lt;code&gt;
@@ -444,24 +478,124 @@ print(b)
               </div>
             </div>
 
-            <div title="Difficult-Rewrite" class="examples" style="display: none;">
+
+            <div title="Grounding" class="examples" style="display: none;">
               <p>
-                Difficult Rewrite:
+                Surface Perturbation:
               </p>
 
               <div class="highlighter-rouge">
                 <div class="highlight">
                   <pre class="highlight"><code>Problem:
-Let's say I have a 1d numpy array like this
-a = np.array([1.5,-0.4,1.3])
-I would like to encode this as a 2D one-hot array(only for elements appear in `a`)
-b = array([[0,0,1], [1,0,0], [0,1,0]])
-The leftmost element always corresponds to the smallest element in `a`, and the rightmost vice versa.
+Let's say I have a 1d numpy positive integer array like this
+a = array([1,2,3])
+I would like to encode this as a 2D one-hot array(for natural number)
+b = array([[0,1,0,0], [0,0,1,0], [0,0,0,1]])
+The leftmost element corresponds to 0 in `a`(NO MATTER whether 0 appears in `a` or not.), and the rightmost corresponds to the largest number.
 Is there a quick way to do this only using numpy? Quicker than just looping over a to set elements of b, that is.
 A:
 &lt;code&gt;
 import numpy as np
-a = np.array([1.5, -0.4, 1.3])
+a = np.array([1, 0, 3])
+&lt;/code&gt;
+BEGIN SOLUTION
+&lt;code&gt;
+[insert]
+&lt;/code&gt;
+END SOLUTION
+&lt;code&gt;
+print(b)
+&lt;/code&gt;
+</code></pre>
+                </div>
+              </div>
+            </div>
+
+
+            <div title="Aggregation" class="examples" style="display: none;">
+              <p>
+                Surface Perturbation:
+              </p>
+
+              <div class="highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>Problem:
+Let's say I have a 1d numpy positive integer array like this
+a = array([1,2,3])
+I would like to encode this as a 2D one-hot array(for natural number)
+b = array([[0,1,0,0], [0,0,1,0], [0,0,0,1]])
+The leftmost element corresponds to 0 in `a`(NO MATTER whether 0 appears in `a` or not.), and the rightmost corresponds to the largest number.
+Is there a quick way to do this only using numpy? Quicker than just looping over a to set elements of b, that is.
+A:
+&lt;code&gt;
+import numpy as np
+a = np.array([1, 0, 3])
+&lt;/code&gt;
+BEGIN SOLUTION
+&lt;code&gt;
+[insert]
+&lt;/code&gt;
+END SOLUTION
+&lt;code&gt;
+print(b)
+&lt;/code&gt;
+</code></pre>
+                </div>
+              </div>
+            </div>
+
+
+            <div title="Summarization" class="examples" style="display: none;">
+              <p>
+                Surface Perturbation:
+              </p>
+
+              <div class="highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>Problem:
+Let's say I have a 1d numpy positive integer array like this
+a = array([1,2,3])
+I would like to encode this as a 2D one-hot array(for natural number)
+b = array([[0,1,0,0], [0,0,1,0], [0,0,0,1]])
+The leftmost element corresponds to 0 in `a`(NO MATTER whether 0 appears in `a` or not.), and the rightmost corresponds to the largest number.
+Is there a quick way to do this only using numpy? Quicker than just looping over a to set elements of b, that is.
+A:
+&lt;code&gt;
+import numpy as np
+a = np.array([1, 0, 3])
+&lt;/code&gt;
+BEGIN SOLUTION
+&lt;code&gt;
+[insert]
+&lt;/code&gt;
+END SOLUTION
+&lt;code&gt;
+print(b)
+&lt;/code&gt;
+</code></pre>
+                </div>
+              </div>
+            </div>
+
+
+            <div title="Exploration" class="examples" style="display: none;">
+              <p>
+                Surface Perturbation:
+              </p>
+
+              <div class="highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>Problem:
+Let's say I have a 1d numpy positive integer array like this
+a = array([1,2,3])
+I would like to encode this as a 2D one-hot array(for natural number)
+b = array([[0,1,0,0], [0,0,1,0], [0,0,0,1]])
+The leftmost element corresponds to 0 in `a`(NO MATTER whether 0 appears in `a` or not.), and the rightmost corresponds to the largest number.
+Is there a quick way to do this only using numpy? Quicker than just looping over a to set elements of b, that is.
+A:
+&lt;code&gt;
+import numpy as np
+a = np.array([1, 0, 3])
 &lt;/code&gt;
 BEGIN SOLUTION
 &lt;code&gt;
