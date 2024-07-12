@@ -209,8 +209,8 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <h2 class="subtitle has-text-centered">
-          TableBench is a benchmark to evaluate LLMs' performance in understanding and processing tabular data. It consists of testing 10 table-related capabilities across 6 widely used table formats. We evaluate ~20 models on TableBench and present a series of valuable insights.
+        <h2 class="subtitle has-text-justified">
+          TableBench is a benchmark to evaluate LLMs' performance in understanding and processing tabular data. It consists of 10 table-related capabilities testing across 6 widely used table formats. We evaluate ~20 models on TableBench and present a series of valuable insights.
         </h2>
         <img src="static/images/fig1-example.jpg">
       </div>
@@ -240,7 +240,7 @@
       <!-- Perturbation and Prompt. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Perturbation and Prompt</h2>
+          <h2 class="title is-3">Definitions of Different Capabilities</h2>
           <div class="content has-text-justified">
             <p>
               For questions from StackOverflow, we equipped them with prompts, test cases, and evaluation functions and
@@ -252,28 +252,37 @@
             </p>
 
             <ul>
-              <li><strong>Origin:</strong> &nbsp; Equipped them with a prompt, testcases, and an evaluation function.
+              <li><strong>Structure Understanding:</strong> The capability of an LLM on identifying the organizational layout of tables. It
+                aims to test whether an LLM can accurately interpret the foundational layout of a table.
               </li>
-              <li><strong>Surface Perturbation:</strong> &nbsp; We paraphrased the question or modified the code context
-                in
-                the question, but the reference solution should stay the same after the perturbation. </li>
-              <li><strong>Semantic Perturbation:</strong> &nbsp; We changed the semantics of the reference solution
-                without
-                changing its difficulty.</li>
-              <li><strong>Difficult Rewrite:</strong> &nbsp; More complex and more difficult.</li>
+              <li><strong>Format Understanding:</strong> The capability of an LLM to recognize and digest various table representations. </li>
+              <li><strong>Knowledge Understanding:</strong> The capability of an LLM to understand the semantic structure and meaning of table
+                contents. It requires a model to link the elements of
+                the table to semantic tags from Knowledge Graph
+                (KG).</li>
+              <li><strong>Largetable Understanding:</strong> The capability of an LLM to manage large tables that may contain vast amounts
+                of cells. It is design to evaluate whether a model can handle scalability issues and whether the performance remains robust with large tables.</li>
+              <li><strong>Commanding:</strong> The
+                capability of an LLM to manipulate table(s) following various user commands. We aim to explore the
+                model’s intrinsic commanding capabilities, thus requiring the model to directly return the edited result
+                without relying on external tools or code.</li>
+              <li><strong>Coding:</strong> The capability of an LLM to proficiently use code to handle and process tabular data. It requires developing code
+                to manipulate and process table data effectively.</li>
+              <li><strong>Grounding:</strong> The capability of an LLM in locating and extracting the specific information given a user question. It requires the model to index, search, locate and return
+                the exact match answer of the question from the
+                table.</li>
+              <li><strong>Aggregation:</strong> The
+                capability of an LLM to perform numerical reasoning. It requires the model to synthesize information
+                across multiple cells or rows/columns to conduct
+                numerical calculation and inference.</li>
+              <li><strong>Summarization:</strong> The capability of an LLM on distilling highlevel summaries from structured data. It requires the model to provide a one-sentence description given a question or determine whether a summary can be derived from the table.</li>
+              <li><strong>Exploration:</strong> The
+                capability of an LLM to navigate through and draw
+                valuable insights from tabular data. It requires
+                the model to uncover patterns, trends, and insights
+                from organized table data.</li>
             </ul>
 
-            <p>
-              We also provided an Insertion style prompt and a Completion style prompt for each question (including
-              perturbation).
-            </p>
-
-            <ul>
-              <li><strong>Insertion:</strong> &nbsp; Models need to predict what should be written in the place of
-                "[insert]".</li>
-              <li><strong>Completion:</strong> &nbsp; Models need to predict what should b written after the prompt.
-              </li>
-            </ul>
 
             <p>
               Here is the performance of Codex-davinci-002 on DS-1000.
@@ -288,11 +297,15 @@
             
             <div class="tabs is-centered code_expl_lst">
               <ul>
-                <li title="Insertion" class="is-active"><a>Insertion</a></li>
-                <li title="Completion"><a>Completion</a></li>
-                <li title="Surface-Perturbation"><a>Surface Perturbation</a></li>
-                <li title="Semantic-Perturbation"><a>Semantic Perturbation</a></li>
-                <li title="Difficult-Rewrite"><a>Difficult Rewrite</a></li>
+                <li title="Structure" class="is-active"><a>Structure</a></li>
+                <li title="Largetable"><a>Largetable</a></li>
+                <li title="Knowledge"><a>Knowledge</a></li>
+                <li title="Commanding"><a>Commanding</a></li>
+                <li title="Coding"><a>Coding</a></li>
+                <li title="Grounding" class="is-active"><a>Grounding</a></li>
+                <li title="Aggregation" class="is-active"><a>Aggregation</a></li>
+                <li title="Summarization" class="is-active"><a>Summarization</a></li>
+                <li title="Exploration" class="is-active"><a>Exploration</a></li>
               </ul>
             </div>
 
@@ -322,59 +335,62 @@
             </script>
 
             <div title="Structure" class="examples" style="display: block;">
-              <p>
-                Insertion:
-              </p>
-
               <div class="highlighter-rouge">
                 <div class="highlight">
-                  <pre class="highlight"><code>Problem:
-Let's say I have a 1d numpy positive integer array like this:
-a = array([1,0,3])
-I would like to encode this as a 2D one-hot array(for natural number)
-b = array([[0,1,0,0], [1,0,0,0], [0,0,0,1]])
-The leftmost element corresponds to 0 in `a`(NO MATTER whether 0 appears in `a` or not.), and the rightmost vice versa.
-Is there a quick way to do this only using numpy? Quicker than just looping over a to set elements of b, that is.
-A:
-&lt;code&gt;
-import numpy as np
-a = np.array([1, 0, 3])
-&lt;/code&gt;
-BEGIN SOLUTION
-&lt;code&gt;
-[insert]
-&lt;/code&gt;
-END SOLUTION
-&lt;code&gt;
-print(b)
-&lt;/code&gt;
+                  <pre class="highlight"><code>Instruction: Given a table, please answer the question based on the table. 
+Do NOT add any explanations. Return the final result as the JSON format:
+{'prediction': '&lt;answer&gt;'}, such as {'prediction': 'China'}.
+
+{Example}
+
+Table:
+| A1,Book Administrator Listing   | B1,        | C1,                  | D1,        | E1,                 | F1,       |
+|:--------------------------------|:-----------|:---------------------|:-----------|:--------------------|:----------|
+| A2,                             | B2,        | C2,                  | D2,        | E2,                 | F2,       |
+| A3,Company                      | B3,Group   | C3,Report To         | D3,        | E3,                 | F3,       |
+| A4,ENA                          | B4,Gas     | C4,Jeff Gossett      | D4,        | E4,                 | F4,       |
+| A5,                             | B5,        | C5,                  | D5,        | E5,                 | F5,       |
+| A6,Name                         | B6,Book ID | C6,Primary / Back-up | D6,Phone   | E6,Manual or System | F6,System |
+| A7,Connie Sutton                | B7,ABC     | C7,Primary           | D7,x3-5686 | E7,System           | F7,ERMS   |
+| A8,Connie Sutton                | B8,XYZ     | C8,Back-up           | D8,x3-5686 | E8,Manual           | F8,       |
+
+Question: Does this table have a header? 
+
+Return the final result as the JSON format: {'prediction': '&lt;answer&gt;'}
+
+Answer:
 </code></pre>
                 </div>
               </div>
             </div>
 
             <div title="Largetable" class="examples" style="display: none;">
-              <p>
-                Completion:
-              </p>
-
               <div class="highlighter-rouge">
                 <div class="highlight">
-                  <pre class="highlight"><code>Problem:
-Let's say I have a 1d numpy positive integer array like this:
-a = array([1,0,3])
-I would like to encode this as a 2D one-hot array(for natural number)
-b = array([[0,1,0,0], [1,0,0,0], [0,0,0,1]])
-The leftmost element corresponds to 0 in `a`(NO MATTER whether 0 appears in `a` or not.), and the rightmost vice versa.
-Is there a quick way to do this only using numpy? Quicker than just looping over a to set elements of b, that is.
-A:
-&lt;code&gt;
-import numpy as np
-a = np.array([1, 0, 3])
-&lt;/code&gt;
-b = ... # put solution in this variable
-BEGIN SOLUTION
-&lt;code&gt;
+                  <pre class="highlight"><code>Instruction: Given a table, please answer the question based on the table. 
+Do NOT add any explanations. Return the final result as the JSON format:
+{'prediction': '&lt;answer&gt;'}, such as {'prediction': 'China'}.
+
+{Example}
+
+Table:
+|   Rank |   Lane | Name                        | Nationality    | Time    | Notes   |
+|-------:|-------:|:----------------------------|:---------------|:--------|:--------|
+|      1 |      5 | Eskender Mustafaiev         | Ukraine        | 38.77   | Q       |
+|      2 |      4 | David Smetanine             | France         | 38.97   | Q       |
+|      3 |      3 | Kyunghyun Kim               | South Korea    | 40.37   | Q       |
+|      4 |      6 | Christoffer Lindhe          | Sweden         | 41.52   | Q       |
+......
+|      5 |      7 | Arnost Petracek             | Czech Republic | 43.12   |         |
+|      6 |      2 | Ronystony Cordeiro da Silva | Brazil         | 44.22   |         |
+|      7 |      8 | Grant Patterson             | Australia      | 55.49   |         |
+|      8 |      1 | Arnulfo Castorena           | Mexico         | 1:03.49 |         |
+
+Question: How many columns are there in the table?
+
+Return the final result as the JSON format: {'prediction': '&lt;answer&gt;'}
+
+Answer:
 </code></pre>
                 </div>
               </div>
@@ -387,27 +403,28 @@ BEGIN SOLUTION
 
               <div class="highlighter-rouge">
                 <div class="highlight">
-                  <pre class="highlight"><code>Problem:
-Let's say I have a 1d numpy positive integer array like this
-a = array([1,2,3])
-I would like to encode this as a 2D one-hot array(for natural number)
-b = array([[0,1,0,0], [0,0,1,0], [0,0,0,1]])
-The leftmost element corresponds to 0 in `a`(NO MATTER whether 0 appears in `a` or not.), and the rightmost corresponds to the largest number.
-Is there a quick way to do this only using numpy? Quicker than just looping over a to set elements of b, that is.
-A:
-&lt;code&gt;
-import numpy as np
-a = np.array([1, 0, 3])
-&lt;/code&gt;
-BEGIN SOLUTION
-&lt;code&gt;
-[insert]
-&lt;/code&gt;
-END SOLUTION
-&lt;code&gt;
-print(b)
-&lt;/code&gt;
-</code></pre>
+                  <pre class="highlight"><code>Given a table and a target cell, please annotate target cell with an entity of Wikidata. 
+One cell can be annotated by one entity. Return the entity label name.
+Do !!!not!!! return the entity id. Do NOT add any explanations. 
+Return the final result as the JSON format:
+{'prediction': '&lt;answer&gt;'}, such as {'prediction': 'China'}.
+
+{Example}
+
+Table: 
+| col0                     | col1                  |
+|:-------------------------|:----------------------|
+| Kletting Peak            | Richard K.A. Kletting |
+| Mount Balch              | Edwin Swift Balch     |
+| Mount Barre              | Michel Barré          |
+| Mount Sir James MacBrien | James Howden MacBrien |
+
+Target row id: 3
+Target column id: 1
+Target cell value: James Howden MacBrien
+Return the final result as the JSON format: {'prediction': '&lt;answer&gt;'}
+
+Answer:</code></pre>
                 </div>
               </div>
             </div>
@@ -420,26 +437,25 @@ print(b)
 
               <div class="highlighter-rouge">
                 <div class="highlight">
-                  <pre class="highlight"><code>Problem:
-Let's say I have a 1d numpy positive integer array like this
-a = array([1,2,3])
-I would like to encode this as a 2D one-hot array(for natural number)
-b = array([[0,1,0,0], [0,0,1,0], [0,0,0,1]])
-The leftmost element corresponds to 0 in `a`(NO MATTER whether 0 appears in `a` or not.), and the rightmost corresponds to the largest number.
-Is there a quick way to do this only using numpy? Quicker than just looping over a to set elements of b, that is.
-A:
-&lt;code&gt;
-import numpy as np
-a = np.array([1, 0, 3])
-&lt;/code&gt;
-BEGIN SOLUTION
-&lt;code&gt;
-[insert]
-&lt;/code&gt;
-END SOLUTION
-&lt;code&gt;
-print(b)
-&lt;/code&gt;
+                  <pre class="highlight"><code>Instruction: Given a table and an instruction, please output the modified table. 
+You should keep your output in the same format as the input table. 
+Only output the modified table, do NOT output any explanations.
+
+{Example}
+
+Table: 
+|   Round | Pick         | Player             | Position      | School      |
+|--------:|:-------------|:-------------------|:--------------|:------------|
+|       2 | 55           | Quinton Caver      | Linebacker    | Arkansas    |
+|       3 | 63           | Derrick Burgess    | Defensive end | Mississippi |
+|       4 | 121          | Correll Buckhalter | Running back  | Nebraska    |
+|       5 | 147          | Tony Stewart       | Tight end     | Penn State  |
+|     155 | A. J. Feeley | Quarterback        | Oregon        |             |
+
+Question: This is a table. Please add "['1', '25', 'Freddie Mitchell', 'Wide receiver', 
+'UCLA']" as the 1st row of the table and provide the result after addition.
+
+Answer:
 </code></pre>
                 </div>
               </div>
@@ -453,26 +469,55 @@ print(b)
 
               <div class="highlighter-rouge">
                 <div class="highlight">
-                  <pre class="highlight"><code>Problem:
-Let's say I have a 1d numpy positive integer array like this
-a = array([1,2,3])
-I would like to encode this as a 2D one-hot array(for natural number)
-b = array([[0,1,0,0], [0,0,1,0], [0,0,0,1]])
-The leftmost element corresponds to 0 in `a`(NO MATTER whether 0 appears in `a` or not.), and the rightmost corresponds to the largest number.
-Is there a quick way to do this only using numpy? Quicker than just looping over a to set elements of b, that is.
-A:
-&lt;code&gt;
-import numpy as np
-a = np.array([1, 0, 3])
-&lt;/code&gt;
-BEGIN SOLUTION
-&lt;code&gt;
-[insert]
-&lt;/code&gt;
-END SOLUTION
-&lt;code&gt;
-print(b)
-&lt;/code&gt;
+                  <pre class="highlight"><code>Instruction: I want you to act as a data analytics scientist. I will give you a table, 
+an user query, and you need to generate Python code to answer the user query. You should
+follow the rules:
+
+    1. Return the Python code, and wrap the code in ```python ... ``` to make it a code block.
+    2. There is already a DataFrame variable for `table` in the environment, so you should not reassign `table=pd.read_html(...)` in the code.
+    3. Stores the final result in the variable `result`. I will directly utilize the 'result' variable for assessing the subsequent code outcomes.
+    4. The result must be one variable being one of pd.DataFrame, List[int], List[float], List[str], int, float, str, dict.
+    5. For Pivot/groupby, Aggregation, Filter, Sort, Add virtual field, Calculation operations, you should use pandas library.
+    6. For forecasting, you should use greykite or prophet library.
+    7. For chart generation:  
+       7.1 You should use matplotlib library.
+       7.2 You should assign a !!!result!!! dictionary: {"x_fields": field_name, "y_fields": [field_name1, field_name2], "chart_type": chart_type}. chart_type choose from lineChart, barChart, scatterChart, pieChart.   
+       7.3 You should print the result at the end.  
+    8. For basic insight, there are 7 types: Rank, RankLast, Attribution, Trend, Monotonicity, Outlier, Unimodality. 
+       8.1 There are two descriptions of insight, and you can choose one of them or their values to answer the query:
+           + is_insight: bool, whether the insight is true
+           + property: dict, the property of the insight. For "Rank", key is "First" and value is str; for "RankLast", key is "Last" and value is str; for "Attribution", key is "Dominator" and value is str; for "Trend", key is "IsIncreasing" and valus is bool; for "Monotonicity", key is "Trend" and value is "Increasing" or "Decreasing"; for "Outlier", key is "TemporalOutlierLocation" and value is List[str]; for "Unimodality", key is "Location" and value is List[str].
+       8.2 The result of your answer to the query needs to refer the description. The result must be a direct answer to the query, not a direct dict of the above descriptions. The result can be True, "Increasing", "Decreasing" and so on.
+
+{Example}
+
+Table:
+|   sid | sname               | sex   |   age |   year |   gpa |
+|------:|:--------------------|:------|------:|-------:|------:|
+|     1 | Jacobs, T.          | m     |    29 |      5 |   3.6 |
+|     2 | Pierson, E.         | m     |    32 |      5 |   3.5 |
+|     3 | Zeene, Ben N.       | m     |    21 |      5 |   3.9 |
+|     4 | Sulfate, Barry M.   | m     |    19 |      2 |   2.8 |
+|     5 | Form, Clara O.      | f     |    18 |      1 |   3.3 |
+|     6 | Scott, Kim J.       | m     |    20 |      1 |   3.8 |
+|     7 | Sather, Roberto B.  | m     |    22 |      4 |   2.2 |
+|     8 | Stanley, Leotha T.  | m     |    21 |      3 |   3.6 |
+|     9 | Smith, Joyce A.     | f     |    21 |      4 |   2   |
+|    10 | Jones, David S.     | m     |    19 |      2 |   3.5 |
+|    11 | Paul, Mary W.       | f     |    23 |      5 |   3.6 |
+|    12 | Soong, V.           | f     |    24 |      5 |   3.5 |
+|    13 | Kellerman, S.       | f     |    21 |      3 |   2.9 |
+|    14 | Cheong, R.          | m     |    25 |      4 |   3   |
+|    15 | Borchart, Sandra L. | f     |    26 |      5 |   3.9 |
+|    16 | Alsberg, David J.   | m     |    25 |      5 |   3.5 |
+|    17 | Thorton, James Q.   | m     |    28 |      4 |   2.7 |
+|    18 | Gooch               | m     |    26 |      1 |   1.4 |
+|    19 | Smith, L.           | m     |    43 |      4 |   0.7 |
+|    20 | Korpel, E.          | f     |    19 |      3 |   3.5 |
+
+User query: Who is the top student with a GPA below 3.2?
+
+Answer: 
 </code></pre>
                 </div>
               </div>
@@ -486,26 +531,30 @@ print(b)
 
               <div class="highlighter-rouge">
                 <div class="highlight">
-                  <pre class="highlight"><code>Problem:
-Let's say I have a 1d numpy positive integer array like this
-a = array([1,2,3])
-I would like to encode this as a 2D one-hot array(for natural number)
-b = array([[0,1,0,0], [0,0,1,0], [0,0,0,1]])
-The leftmost element corresponds to 0 in `a`(NO MATTER whether 0 appears in `a` or not.), and the rightmost corresponds to the largest number.
-Is there a quick way to do this only using numpy? Quicker than just looping over a to set elements of b, that is.
-A:
-&lt;code&gt;
-import numpy as np
-a = np.array([1, 0, 3])
-&lt;/code&gt;
-BEGIN SOLUTION
-&lt;code&gt;
-[insert]
-&lt;/code&gt;
-END SOLUTION
-&lt;code&gt;
-print(b)
-&lt;/code&gt;
+                  <pre class="highlight"><code>Instruction: Given a table, please answer the question based on the table. 
+Do NOT add any explanations. If there is more than one answer, separate them with 
+commas(,). Return the final result as the JSON format: {'prediction': '&lt;answer&gt;'}, 
+such as {'prediction': 'China'}.
+
+{Example}
+
+Table: 
+|   Rank |   Lane | Name                        | Nationality    | Time    | Notes   |
+|-------:|-------:|:----------------------------|:---------------|:--------|:--------|
+|      1 |      5 | Eskender Mustafaiev         | Ukraine        | 38.77   | Q       |
+|      2 |      4 | David Smetanine             | France         | 38.97   | Q       |
+|      3 |      3 | Kyunghyun Kim               | South Korea    | 40.37   | Q       |
+|      4 |      6 | Christoffer Lindhe          | Sweden         | 41.52   | Q       |
+|      5 |      7 | Arnost Petracek             | Czech Republic | 43.12   |         |
+|      6 |      2 | Ronystony Cordeiro da Silva | Brazil         | 44.22   |         |
+|      7 |      8 | Grant Patterson             | Australia      | 55.49   |         |
+|      8 |      1 | Arnulfo Castorena           | Mexico         | 1:03.49 |         |
+
+Question: how long did it take the 5th place swimmer to finish?
+
+Return the final result as the JSON format: {'prediction': '&lt;answer&gt;'}.
+
+Answer:
 </code></pre>
                 </div>
               </div>
@@ -519,26 +568,31 @@ print(b)
 
               <div class="highlighter-rouge">
                 <div class="highlight">
-                  <pre class="highlight"><code>Problem:
-Let's say I have a 1d numpy positive integer array like this
-a = array([1,2,3])
-I would like to encode this as a 2D one-hot array(for natural number)
-b = array([[0,1,0,0], [0,0,1,0], [0,0,0,1]])
-The leftmost element corresponds to 0 in `a`(NO MATTER whether 0 appears in `a` or not.), and the rightmost corresponds to the largest number.
-Is there a quick way to do this only using numpy? Quicker than just looping over a to set elements of b, that is.
-A:
-&lt;code&gt;
-import numpy as np
-a = np.array([1, 0, 3])
-&lt;/code&gt;
-BEGIN SOLUTION
-&lt;code&gt;
-[insert]
-&lt;/code&gt;
-END SOLUTION
-&lt;code&gt;
-print(b)
-&lt;/code&gt;
+                  <pre class="highlight"><code>Instruction: Given a table, please answer the question based on the table. 
+Do NOT add any explanations. If there is more than one answer, separate them with 
+commas(,). Return the final result as the JSON format: {'prediction': '&lt;answer&gt;'}, 
+such as {'prediction': 'China'}.
+
+{Example}
+
+Table: 
+|   Year | Network   | Race caller    | Color commentator               | Reporters        | Trophy Presentation   |
+|-------:|:----------|:---------------|:--------------------------------|:-----------------|:----------------------|
+|   1959 | CBS       | Fred Capossela | Bryan Field and Chris Schenkel  |                  | Chris Schenkel        |
+|   1958 | CBS       | Fred Capossela | Bryan Field                     |                  |                       |
+|   1957 | CBS       | Fred Capossela | Bryan Field                     |                  |                       |
+|   1956 | CBS       | Fred Capossela | Bryan Field                     |                  |                       |
+|   1955 | CBS       | Fred Capossela | Phil Sutterfield and Win Elliot |                  |                       |
+|   1954 | CBS       | Bryan Field    | Mel Allen                       |                  | Bill Corum            |
+|   1953 | CBS       | Bryan Field    | Mel Allen                       | Phil Sutterfield | Phil Sutterfield      |
+|   1952 | CBS       | Bryan Field    | Sam Renick                      |                  |                       |
+
+
+Question: how many races in the 1950s were not called by bryan field?
+
+Return the final result as the JSON format: {'prediction': '&lt;answer&gt;'}.
+
+Answer:
 </code></pre>
                 </div>
               </div>
@@ -552,26 +606,33 @@ print(b)
 
               <div class="highlighter-rouge">
                 <div class="highlight">
-                  <pre class="highlight"><code>Problem:
-Let's say I have a 1d numpy positive integer array like this
-a = array([1,2,3])
-I would like to encode this as a 2D one-hot array(for natural number)
-b = array([[0,1,0,0], [0,0,1,0], [0,0,0,1]])
-The leftmost element corresponds to 0 in `a`(NO MATTER whether 0 appears in `a` or not.), and the rightmost corresponds to the largest number.
-Is there a quick way to do this only using numpy? Quicker than just looping over a to set elements of b, that is.
-A:
-&lt;code&gt;
-import numpy as np
-a = np.array([1, 0, 3])
-&lt;/code&gt;
-BEGIN SOLUTION
-&lt;code&gt;
-[insert]
-&lt;/code&gt;
-END SOLUTION
-&lt;code&gt;
-print(b)
-&lt;/code&gt;
+                  <pre class="highlight"><code>Instruction: Given a table, its page title and section title, please answer the question 
+with a one-sentence description based on the input. Do NOT add any explanations. 
+Return the final result as the JSON format: {'prediction': '&lt;answer&gt;'}, such as 
+{'prediction': 'China'}.
+
+{Example}
+
+Table: 
+| Year    | Title                            | Role                     | Channel   |
+|:--------|:---------------------------------|:-------------------------|:----------|
+| 2015    | Kuch Toh Hai Tere Mere Darmiyaan | Sanjana Kapoor           | Star Plus |
+| 2016    | Kuch Rang Pyar Ke Aise Bhi       | Khushi                   | Sony TV   |
+| 2016    | Gangaa                           | Aashi Jhaa               | &TV       |
+| 2017    | Iss Pyaar Ko Kya Naam Doon 3     | Meghna Narayan Vashishth | Star Plus |
+| 2017–18 | Tu Aashiqui                      | Richa Dhanrajgir         | Colors TV |
+| 2019    | Laal Ishq                        | Pernia                   | &TV       |
+| 2019    | Vikram Betaal Ki Rahasya Gatha   | Rukmani/Kashi            | &TV       |
+| 2019    | Shaadi Ke Siyape                 | Dua                      | &TV       |
+
+Table page title: Shagun Sharma
+Table section title: Television
+
+Question: What TV shows was Shagun Sharma seen in 2019?
+
+Return the final result as the JSON format: {'prediction': '&lt;answer&gt;'}.
+
+Answer:
 </code></pre>
                 </div>
               </div>
@@ -585,26 +646,34 @@ print(b)
 
               <div class="highlighter-rouge">
                 <div class="highlight">
-                  <pre class="highlight"><code>Problem:
-Let's say I have a 1d numpy positive integer array like this
-a = array([1,2,3])
-I would like to encode this as a 2D one-hot array(for natural number)
-b = array([[0,1,0,0], [0,0,1,0], [0,0,0,1]])
-The leftmost element corresponds to 0 in `a`(NO MATTER whether 0 appears in `a` or not.), and the rightmost corresponds to the largest number.
-Is there a quick way to do this only using numpy? Quicker than just looping over a to set elements of b, that is.
-A:
-&lt;code&gt;
-import numpy as np
-a = np.array([1, 0, 3])
-&lt;/code&gt;
-BEGIN SOLUTION
-&lt;code&gt;
-[insert]
-&lt;/code&gt;
-END SOLUTION
-&lt;code&gt;
-print(b)
-&lt;/code&gt;
+                  <pre class="highlight"><code>Instruction: I want you to act as a data analytics scientist. I will give you a table, an user query, and you need to answer the user query. You should follow the rules:
+
+    1. Return the final result as the JSON format: 
+    {'prediction': '&lt;answer&gt;'}, such as {'prediction': 'China'}.
+    2. For basic insight, there are 7 types: Rank, RankLast, Attribution, Trend, Monotonicity, Outlier, Unimodality. 
+       2.1 There are two descriptions of insight, and you can choose one of them or their values to answer the query:
+           + is_insight: bool, whether the insight is true
+           + property: dict, the property of the insight. For "Rank", key is "First" and value is str; for "RankLast", key is "Last" and value is str; for "Attribution", key is "Dominator" and value is str; for "Trend", key is "IsIncreasing" and valus is bool; for "Monotonicity", key is "Trend" and value is "Increasing" or "Decreasing"; for "Outlier", key is "TemporalOutlierLocation" and value is List[str]; for "Unimodality", key is "Location" and value is List[str].
+    2.2 The result of your answer to the query needs to refer the description. The result must be a direct answer to the query, not a direct dict of the above descriptions. The result can be True, "Increasing", "Decreasing" and so on.
+
+{Example}
+
+Given the table:
+| Time   |   Score |
+|:-------|--------:|
+| 12:23  |       4 |
+| 13:23  |       3 |
+| 14:23  |       5 |
+| 15:23  |       6 |
+| 16:23  |       7 |
+| 17:23  |       4 |
+| 18:23  |       5 |
+| 19:23  |       6 |
+| 20:23  |       9 |
+
+User query: Is there an increase over time?
+
+Answer:
 </code></pre>
                 </div>
               </div>
