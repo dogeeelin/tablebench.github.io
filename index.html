@@ -302,10 +302,10 @@
                 <li title="Knowledge"><a>Knowledge</a></li>
                 <li title="Commanding"><a>Commanding</a></li>
                 <li title="Coding"><a>Coding</a></li>
-                <li title="Grounding" class="is-active"><a>Grounding</a></li>
-                <li title="Aggregation" class="is-active"><a>Aggregation</a></li>
-                <li title="Summarization" class="is-active"><a>Summarization</a></li>
-                <li title="Exploration" class="is-active"><a>Exploration</a></li>
+                <li title="Grounding"><a>Grounding</a></li>
+                <li title="Aggregation"><a>Aggregation</a></li>
+                <li title="Summarization"><a>Summarization</a></li>
+                <li title="Exploration"><a>Exploration</a></li>
               </ul>
             </div>
 
@@ -714,7 +714,8 @@ Answer:
 
             <div class="tabs is-centered example_lst">
               <ul>
-                <li class="is-active"><a title="JSON">JSON</a></li>
+                <li class="is-active"><a title="2d-list">2D-List</a></li>
+                <li><a title="JSON">JSON</a></li>
                 <li><a title="Markdown">Markdown</a></li>
                 <li><a title="XML">XML</a></li>
                 <li><a title="HTML">HTML</a></li>
@@ -758,47 +759,259 @@ Answer:
 
             </script>
 
-            <div title="JSON" class="lib_examples" style="display: block;">
-              <img src="static/images/numpy_example.jpg">
-              <p>
-                NumPy example problem involving randomness, requiring the use of a specialist knowledge test.
-              </p>
+
+            <div title="2D-List" class="lib_examples" style="display: block;">
+              <pre class="highlight"><code>
+[
+['Rank', 'Lane', 'Name', 'Nationality', 'Time', 'Notes'],  
+[1, 5, 'Eskender Mustafaiev', 'Ukraine', '38.77', 'Q'], 
+[2, 4, 'David Smetanine', 'France', '38.97', 'Q'], 
+[3, 3, 'Kyunghyun Kim', 'South Korea', '40.37', 'Q'], 
+[4, 6, 'Christoffer Lindhe', 'Sweden', '41.52', 'Q'], 
+[5, 7, 'Arnost Petracek', 'Czech Republic', '43.12', ''], 
+[6, 2, 'Ronystony Cordeiro da Silva', 'Brazil', '44.22', ''], 
+[7, 8, 'Grant Patterson', 'Australia', '55.49', ''], 
+[8, 1, 'Arnulfo Castorena', 'Mexico', '1:03.49', '']
+]</code></pre>
             </div>
+
+
+
+            <div title="JSON" class="lib_examples" style="display: none;">
+              <pre class="highlight"><code>{'header': 
+          ['Rank', 'Lane', 'Name', 'Nationality', 'Time', 'Notes'], 
+ 'rows':[ 
+          [1, 5, 'Eskender Mustafaiev', 'Ukraine', '38.77', 'Q'], 
+          [2, 4, 'David Smetanine', 'France', '38.97', 'Q'], 
+          [3, 3, 'Kyunghyun Kim', 'South Korea', '40.37', 'Q'], 
+          [4, 6, 'Christoffer Lindhe', 'Sweden', '41.52', 'Q'], 
+          [5, 7, 'Arnost Petracek', 'Czech Republic', '43.12', ''], 
+          [6, 2, 'Ronystony Cordeiro da Silva', 'Brazil', '44.22', ''], 
+          [7, 8, 'Grant Patterson', 'Australia', '55.49', ''], 
+          [8, 1, 'Arnulfo Castorena', 'Mexico', '1:03.49', '']
+        ]}</code></pre>
+            </div>
+
 
             <div title="Markdown" class="lib_examples" style="display: none;">
-              <img src="static/images/scipy_example.jpg">
-              <p>
-                An example problem of SciPy. Specific checking on conversion between dense matrix and sparse matrix.
-              </p>
+              <pre class="highlight"><code> 
+|   Rank |   Lane | Name                  | Nationality    | Time    | Notes   |
+|-------:|-------:|:----------------------|:---------------|:--------|:--------|
+|      1 |      5 | Eskender Mustafaiev   | Ukraine        | 38.77   | Q       |
+|      2 |      4 | David Smetanine       | France         | 38.97   | Q       |
+|      3 |      3 | Kyunghyun Kim         | South Korea    | 40.37   | Q       |
+|      4 |      6 | Christoffer Lindhe    | Sweden         | 41.52   | Q       |
+|      5 |      7 | Arnost Petracek       | Czech Republic | 43.12   |         |
+|      6 |      2 | Ronystony Cordeiro    | Brazil         | 44.22   |         |
+|      7 |      8 | Grant Patterson       | Australia      | 55.49   |         |
+|      8 |      1 | Arnulfo Castorena     | Mexico         | 1:03.49 |         |</code></pre>
             </div>
+            
+
 
             <div title="XML" class="lib_examples" style="display: none;">
-              <img src="static/images/pandas_example.jpg">
-              <p>
-                An example problem of Pandas. We need to write reference solutions by ourselves
-                because high-vote replies from StackOverflow ignore the requirement "but does not exactly match it".
-              </p>
+              <pre class="highlight"><code> 
+&lt;Table&gt;
+  &lt;Header&gt;
+    &lt;Column&gt;Rank&lt;/Column&gt;
+    &lt;Column&gt;Lane&lt;/Column&gt;
+    &lt;Column&gt;Name&lt;/Column&gt;
+    &lt;Column&gt;Nationality&lt;/Column&gt;
+    &lt;Column&gt;Time&lt;/Column&gt;
+    &lt;Column&gt;Notes&lt;/Column&gt;
+  &lt;/Header&gt;
+  &lt;Row&gt;
+    &lt;Cell&gt;1&lt;/Cell&gt;
+    &lt;Cell&gt;5&lt;/Cell&gt;
+    &lt;Cell&gt;Eskender Mustafaiev&lt;/Cell&gt;
+    &lt;Cell&gt;Ukraine&lt;/Cell&gt;
+    &lt;Cell&gt;38.77&lt;/Cell&gt;
+    &lt;Cell&gt;Q&lt;/Cell&gt;
+  &lt;/Row&gt;
+  &lt;Row&gt;
+    &lt;Cell&gt;2&lt;/Cell&gt;
+    &lt;Cell&gt;4&lt;/Cell&gt;
+    &lt;Cell&gt;David Smetanine&lt;/Cell&gt;
+    &lt;Cell&gt;France&lt;/Cell&gt;
+    &lt;Cell&gt;38.97&lt;/Cell&gt;
+    &lt;Cell&gt;Q&lt;/Cell&gt;
+  &lt;/Row&gt;
+  &lt;Row&gt;
+    &lt;Cell&gt;3&lt;/Cell&gt;
+    &lt;Cell&gt;3&lt;/Cell&gt;
+    &lt;Cell&gt;Kyunghyun Kim&lt;/Cell&gt;
+    &lt;Cell&gt;South Korea&lt;/Cell&gt;
+    &lt;Cell&gt;40.37&lt;/Cell&gt;
+    &lt;Cell&gt;Q&lt;/Cell&gt;
+  &lt;/Row&gt;
+  &lt;Row&gt;
+    &lt;Cell&gt;4&lt;/Cell&gt;
+    &lt;Cell&gt;6&lt;/Cell&gt;
+    &lt;Cell&gt;Christoffer Lindhe&lt;/Cell&gt;
+    &lt;Cell&gt;Sweden&lt;/Cell&gt;
+    &lt;Cell&gt;41.52&lt;/Cell&gt;
+    &lt;Cell&gt;Q&lt;/Cell&gt;
+  &lt;/Row&gt;
+  &lt;Row&gt;
+    &lt;Cell&gt;5&lt;/Cell&gt;
+    &lt;Cell&gt;7&lt;/Cell&gt;
+    &lt;Cell&gt;Arnost Petracek&lt;/Cell&gt;
+    &lt;Cell&gt;Czech Republic&lt;/Cell&gt;
+    &lt;Cell&gt;43.12&lt;/Cell&gt;
+    &lt;Cell /&gt;
+  &lt;/Row&gt;
+  &lt;Row&gt;
+    &lt;Cell&gt;6&lt;/Cell&gt;
+    &lt;Cell&gt;2&lt;/Cell&gt;
+    &lt;Cell&gt;Ronystony Cordeiro da Silva&lt;/Cell&gt;
+    &lt;Cell&gt;Brazil&lt;/Cell&gt;
+    &lt;Cell&gt;44.22&lt;/Cell&gt;
+    &lt;Cell /&gt;
+  &lt;/Row&gt;
+  &lt;Row&gt;
+    &lt;Cell&gt;7&lt;/Cell&gt;
+    &lt;Cell&gt;8&lt;/Cell&gt;
+    &lt;Cell&gt;Grant Patterson&lt;/Cell&gt;
+    &lt;Cell&gt;Australia&lt;/Cell&gt;
+    &lt;Cell&gt;55.49&lt;/Cell&gt;
+    &lt;Cell /&gt;
+  &lt;/Row&gt;
+  &lt;Row&gt;
+    &lt;Cell&gt;8&lt;/Cell&gt;
+    &lt;Cell&gt;1&lt;/Cell&gt;
+    &lt;Cell&gt;Arnulfo Castorena&lt;/Cell&gt;
+    &lt;Cell&gt;Mexico&lt;/Cell&gt;
+    &lt;Cell&gt;1:03.49&lt;/Cell&gt;
+    &lt;Cell /&gt;
+  &lt;/Row&gt;
+&lt;/Table&gt;</code></pre>
             </div>
 
+
+
             <div title="HTML" class="lib_examples" style="display: none;">
-              <img src="static/images/tensorflow_example.jpg">
-              <p>
-                An example problem of TensorFlow. We implemented well-designed test function for tensor comparison.
-              </p>
+              <!-- <img src="static/images/tensorflow_example.jpg"> -->
+              <pre class="highlight"><code> 
+  &lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;Rank&lt;/th&gt;
+      &lt;th&gt;Lane&lt;/th&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Nationality&lt;/th&gt;
+      &lt;th&gt;Time&lt;/th&gt;
+      &lt;th&gt;Notes&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;Eskender Mustafaiev&lt;/td&gt;
+      &lt;td&gt;Ukraine&lt;/td&gt;
+      &lt;td&gt;38.77&lt;/td&gt;
+      &lt;td&gt;Q&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;David Smetanine&lt;/td&gt;
+      &lt;td&gt;France&lt;/td&gt;
+      &lt;td&gt;38.97&lt;/td&gt;
+      &lt;td&gt;Q&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;Kyunghyun Kim&lt;/td&gt;
+      &lt;td&gt;South Korea&lt;/td&gt;
+      &lt;td&gt;40.37&lt;/td&gt;
+      &lt;td&gt;Q&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;Christoffer Lindhe&lt;/td&gt;
+      &lt;td&gt;Sweden&lt;/td&gt;
+      &lt;td&gt;41.52&lt;/td&gt;
+      &lt;td&gt;Q&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;Arnost Petracek&lt;/td&gt;
+      &lt;td&gt;Czech Republic&lt;/td&gt;
+      &lt;td&gt;43.12&lt;/td&gt;
+      &lt;td&gt;A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;Ronystony Cordeiro da Silva&lt;/td&gt;
+      &lt;td&gt;Brazil&lt;/td&gt;
+      &lt;td&gt;44.22&lt;/td&gt;
+      &lt;td&gt;A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;Grant Patterson&lt;/td&gt;
+      &lt;td&gt;Australia&lt;/td&gt;
+      &lt;td&gt;55.49&lt;/td&gt;
+      &lt;td&gt;A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Arnulfo Castorena&lt;/td&gt;
+      &lt;td&gt;Mexico&lt;/td&gt;
+      &lt;td&gt;1:03.49&lt;/td&gt;
+      &lt;td&gt;A&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
             </div>
 
             <div title="LaTeX" class="lib_examples" style="display: none;">
-              <img src="static/images/pytorch_example.jpg">
-              <p>
-                An example problem of PyTorch, with failed attempt and error message given in description.
-              </p>
+              <pre class="highlight"><code>
+\begin{tabular}{rrllll}
+\toprule
+Rank & Lane & Name                         & Nationality    & Time    & Notes \\
+\midrule
+1    & 5    & Eskender Mustafaiev          & Ukraine        & 38.77   & Q     \\
+2    & 4    & David Smetanine              & France         & 38.97   & Q     \\
+3    & 3    & Kyunghyun Kim                & South Korea    & 40.37   & Q     \\
+4    & 6    & Christoffer Lindhe           & Sweden         & 41.52   & Q     \\
+5    & 7    & Arnost Petracek              & Czech Republic & 43.12   &       \\
+6    & 2    & Ronystony Cordeiro da Silva  & Brazil         & 44.22   &       \\
+7    & 8    & Grant Patterson              & Australia      & 55.49   &       \\
+8    & 1    & Arnulfo Castorena            & Mexico         & 1:03.49 &       \\
+\bottomrule
+\end{tabular} </code></pre>
             </div>
 
             <div title="Grid" class="lib_examples" style="display: none;">
-              <img src="static/images/sklearn_example.jpg">
-              <p>
-                An example problem of Scikit-learn, requiring applying sklearn preprocessing method to Pandas dataframe.
-              </p>
+              <pre class="highlight"><code>
++--------+--------+-----------------------------+----------------+---------+---------+
+|   Rank |   Lane | Name                        | Nationality    | Time    | Notes   |
++========+========+=============================+================+=========+=========+
+|      1 |      5 | Eskender Mustafaiev         | Ukraine        | 38.77   | Q       |
++--------+--------+-----------------------------+----------------+---------+---------+
+|      2 |      4 | David Smetanine             | France         | 38.97   | Q       |
++--------+--------+-----------------------------+----------------+---------+---------+
+|      3 |      3 | Kyunghyun Kim               | South Korea    | 40.37   | Q       |
++--------+--------+-----------------------------+----------------+---------+---------+
+|      4 |      6 | Christoffer Lindhe          | Sweden         | 41.52   | Q       |
++--------+--------+-----------------------------+----------------+---------+---------+
+|      5 |      7 | Arnost Petracek             | Czech Republic | 43.12   |         |
++--------+--------+-----------------------------+----------------+---------+---------+
+|      6 |      2 | Ronystony Cordeiro da Silva | Brazil         | 44.22   |         |
++--------+--------+-----------------------------+----------------+---------+---------+
+|      7 |      8 | Grant Patterson             | Australia      | 55.49   |         |
++--------+--------+-----------------------------+----------------+---------+---------+
+|      8 |      1 | Arnulfo Castorena           | Mexico         | 1:03.49 |         |
++--------+--------+-----------------------------+----------------+---------+---------+
+              </code></pre>
             </div>
 
             <!-- <div title="Matplotlib" class="lib_examples" style="display: none;">
